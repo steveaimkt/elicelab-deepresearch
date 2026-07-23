@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/mcp.json",
+  "_comment": "엘리스랩 딥리서치 교육용 MCP 설정. 수강생은 아래 '여기에_붙여넣기' 자리 세 곳에 본인 키만 넣으면 됩니다. 다른 부분은 건드리지 마세요. Gmail은 여기 없습니다(키 발급 없음). 3교시에 클로드 설정 화면에서 커넥터 연결 버튼 한 번으로 붙입니다.",
+
+  "mcpServers": {
+    "firecrawl": {
+      "_설명": "웹을 읽는 눈. 기사·리포트·경쟁사 페이지의 본문을 통째로 가져옵니다.",
+      "_답하는_질문": "원문은 뭐라고 하나",
+      "_키_발급처": "https://firecrawl.dev/app/api-keys (무료 500크레딧/월)",
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "여기에_Firecrawl_키_붙여넣기"
+      }
+    },
+
+    "naver-datalab": {
+      "_설명": "수요의 온도계. 검색어 트렌드(얼마나 찾나) + 쇼핑인사이트(성별·연령·기기별 관심).",
+      "_답하는_질문": "얼마나 찾나 (수요)",
+      "_키_발급처": "https://developers.naver.com → Application → 애플리케이션 등록",
+      "_앱등록_체크박스": "사용 API에서 두 개를 체크하세요: ① 데이터랩(검색어트렌드) ② 데이터랩(쇼핑인사이트)",
+      "_주의": "ID가 긴 값, Secret이 짧은 값입니다. 뒤바꿔 넣으면 401 인증 실패가 뜹니다.",
+      "_못하는_것": "뉴스·블로그 검색과 광고비·ROAS는 못 줍니다. 기사·원문은 Firecrawl이 담당하고, 광고 성과(SearchAd)는 오늘 범위가 아닙니다.",
+      "command": "npx",
+      "args": ["-y", "naver-datalab-mcp-server"],
+      "env": {
+        "NAVER_CLIENT_ID": "여기에_긴_값_붙여넣기",
+        "NAVER_CLIENT_SECRET": "여기에_짧은_값_붙여넣기"
+      }
+    }
+  }
+}
